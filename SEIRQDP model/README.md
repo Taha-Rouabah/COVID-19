@@ -4,15 +4,17 @@ A COVID-19 modeling that uses a generalized SEIR model.
 
 A tailored set of codes has been developed under Python 3.7 to:
 
-    download data from the online COVID-19 data repository [comment]: <>  (determine the optimum fitting depth using cross-validation method)
-    calibrate the model by applying a genetic fitting algorithm to the real data
-    perform forecast modeling
-    and provides parallel computing techniques.
-
+1. download data from the online COVID-19 data repository  
+2. calibrate the model by applying a genetic fitting algorithm to the real data
+3. perform forecast modeling
+4. and provides parallel computing techniques.
+<!---
+(determine the optimum fitting depth using cross-validation method)
+-->
 
 ## Architecture
 
-![The architecture of the module](/images/Diagram.png)
+![The architecture of the module](/SEIQRDP model/images/Diagram.png)
 
 
 ## How to use it?
