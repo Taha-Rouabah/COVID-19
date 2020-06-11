@@ -1,13 +1,19 @@
 # SEIQRDP_model
 
-Ths module includes computational tools to fit data, simulate and calibrate
-parameters of the compartmental epedimiological SEIQRDP model using genetic 
-optimization algorithm and parallel computing techniques.
+A COVID-19 modeling that uses a generalized SEIR model.
+
+A tailored set of codes has been developed under Python 3.7 to:
+
+    download data from the online COVID-19 data repository [comment]: <>  (determine the optimum fitting depth using cross-validation method)
+    calibrate the model by applying a genetic fitting algorithm to the real data
+    perform forecast modeling
+    and provides parallel computing techniques.
+
 
 ## Architecture
 
 ![The architecture of the module](/images/Diagram.png)
-Format: ![Alt Text](url)
+
 
 ## How to use it?
 
@@ -16,3 +22,7 @@ about the classes and methods.
 
 You are welcome to check *launcher.py* file which shows an example of
 how to use this module.
+
+## Data
+
+Data is provided by [github user](https://raw.githubusercontent.com/datasets/covid-19/master/data/time-series-19-covid-combined.csv)
