@@ -14,7 +14,7 @@ A tailored set of codes has been developed under Python 3.7 to:
 
 ## Architecture
 
-![The architecture of the module](/images/Diagram.png)
+![The architecture of the module](COVID-19/SEIQRDP_model/images/Diagram.png)
 
 
 ## How to use it?
