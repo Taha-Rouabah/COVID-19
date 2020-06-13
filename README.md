@@ -24,5 +24,5 @@ how to use this module.
 
 ## Data
 
-* World wide data is provided by [github user](https://raw.githubusercontent.com/datasets/covid-19/master/data/time-series-19-covid-combined.csv)
+* World wide data is provided by a [github raw data file](https://raw.githubusercontent.com/datasets/covid-19/master/data/time-series-19-covid-combined.csv)
 * Data of Algeria is provided by [Algerian official Health Ministry](http://covid19.sante.gov.dz/carte/) and [CDTA](https://covid19.cdta.dz/dashboard/production/index.php#)
