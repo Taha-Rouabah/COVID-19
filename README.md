@@ -17,10 +17,9 @@ optimization algorithm and parallel computing techniques.
 
 ## How to use it?
 
-The module is full documented. Feel free to read all necessary information
+The module is full documented and equiped by all necessary information
 about the classes and methods. 
-
-You are welcome to check *launcher.py* file which shows an example of
+Moreover, you are welcome to check *launcher.py* file which shows an example of
 how to use this module.
 
 ## Data
