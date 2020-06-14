@@ -19,6 +19,8 @@ import scipy.stats as sp
 from copy import deepcopy  # Is needed to create hard copies
 from datetime import timedelta
 import pandas as pd
+from os.path import isdir
+from os import mkdir
 
 import SEIQRDP_model.SEIR_Solver as slv
 from SEIQRDP_model.DataCollector import WebDataReader
@@ -50,6 +52,10 @@ def load_data():
     """
     # Load data from source
     print("Dataset is loading...")
+    if not isdir('Data/'):
+        mkdir('Data/')
+        update_data()
+
     dataset = pd.read_csv('Data/time-series-19-covid-combined.csv')
     
 

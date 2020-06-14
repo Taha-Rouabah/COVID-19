@@ -1,0 +1,7 @@
+colorama
+matplotlib
+numpy
+pandas
+psutil
+scipy
+
