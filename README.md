@@ -50,7 +50,7 @@ how to use this module.
 ## Data
 
 - World wide data is sourced and maintained by the [John Hopkins University Center for Systems Science and Engineering](https://raw.githubusercontent.com/datasets/covid-19/master/data/time-series-19-covid-combined.csv)
-- Data of Algeria is provided by [Algerian official Health Ministry](http://covid19.sante.gov.dz/carte/) and [CDTA](https://covid19.cdta.dz/dashboard/production/index.php#)
+- Data for Algeria is provided by [Algerian Health Ministry](http://covid19.sante.gov.dz/carte/) and [CDTA](https://covid19.cdta.dz/dashboard/production/index.php#)
 
 ## License
 
