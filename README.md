@@ -42,7 +42,7 @@ python setup.py install
 
 ### Quick start
 
-The module is fully documented and equiped by all necessary information
+The module is fully documented and equiped with all necessary information
 about the classes and methods.
 Moreover, you are welcome to check `launcher.py` file which shows an example of
 how to use this module.
