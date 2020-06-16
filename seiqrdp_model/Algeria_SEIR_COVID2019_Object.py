@@ -5,7 +5,6 @@ This version is object oriented and uses 5 methods via
 SEIR_Solver to solve the SEIR model.
 It supports multiprocessing (with Experiment module or any other method
                              by 'adding' experiments together: exp1 + exp2).
-
 This version is not optimized.
 """
 __version__ = '7.5'
@@ -22,8 +21,8 @@ import pandas as pd
 from os.path import isdir
 from os import mkdir
 
-import SEIQRDP_model.SEIR_Solver as slv
-from SEIQRDP_model.DataCollector import WebDataReader
+import seiqrdp_model.SEIR_Solver as slv
+from seiqrdp_model.DataCollector import WebDataReader
 
 # Our SEIR parameters are bound to these intervals
 # They are: [0:alpha, 1:beta, 2:gamma, 3:delta, 4:I0, 5:E0 ]
@@ -382,7 +381,6 @@ class BaseExperiment:
         It is suited for parallel computing since 2 instences of
         BaseExeriment can be added together to form a 3rd one:
             exp3 = exp1 + exp2
-
         Example:
             >> import Algeria_SEIR_COVID2019_Object as SEIR
             >> SEIR.load_data()
@@ -703,7 +701,6 @@ class BaseExperiment:
     def __add__(self, other):
         """
             Defines the + operator for BaseExperiment.
-
             NOTE : This is just a hack for now!
             To Do: Make this more robust
         """

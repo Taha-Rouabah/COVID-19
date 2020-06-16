@@ -107,4 +107,3 @@ class WebDataReader:
         data = data.drop(columns =['Country/Region','Province/State','Lat', 'Long'],axis=1)
 
         return(data)
-
