@@ -5,7 +5,7 @@
 This is a quick sript to launch the SEIQRDP program
 """
 
-from SEIQRDP_model.Experiment import Experiment
+from seiqrdp_model.Experiment import Experiment
 from datetime import datetime
 
 
