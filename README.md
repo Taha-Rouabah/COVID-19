@@ -4,9 +4,9 @@ This repository is aimed to contain the programs used for dynamical modeling of 
 
 This repository will also contain an agent-based program for epidemic spread simulation in near future.
 
-## SEIQRDP_model
+## seiqrdp_model
 
-This module includes computational tools to fit data, simulate and calibrate
+This package includes computational tools to fit data, simulate and calibrate
 parameters of the compartmental epedimiological SEIQRDP model using genetic
 optimization algorithm and parallel computing techniques.
 
@@ -26,7 +26,7 @@ pip install --user SEIQRDP_user
 
 #### Using conda
 
-Active your usual environment (or create a new one) and use the `pip` way.
+Activate your usual environment (or create a new one) and use the `pip` way.
 > This requires `pip` to be installed in your environment
 
 
@@ -49,8 +49,8 @@ how to use this module.
 
 ## Data
 
-- World wide data are sourced and maintained by the [John Hopkins University Center for Systems Science and Engineering](https://raw.githubusercontent.com/datasets/covid-19/master/data/time-series-19-covid-combined.csv)
-- Data for Algeria are provided by [Algerian Health Ministry](http://covid19.sante.gov.dz/carte/) and [CDTA](https://covid19.cdta.dz/dashboard/production/index.php#)
+- World wide data is sourced and maintained by the [John Hopkins University Center for Systems Science and Engineering](https://raw.githubusercontent.com/datasets/covid-19/master/data/time-series-19-covid-combined.csv)
+- Data for Algeria is provided by [Algerian Health Ministry](http://covid19.sante.gov.dz/carte/) and [CDTA](https://covid19.cdta.dz/dashboard/production/index.php#)
 
 ## License
 
