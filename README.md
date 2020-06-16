@@ -12,7 +12,7 @@ optimization algorithm and parallel computing techniques.
 
 ### Architecture
 
-![The architecture of the module](/images/SEIRQDPDiag.png)
+![The architecture of the module](https://github.com/Taha-Rouabah/COVID-19/raw/master/images/SEIRQDPDiag.png)
 
 ### How to install
 
