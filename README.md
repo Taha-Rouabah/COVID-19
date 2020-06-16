@@ -21,7 +21,7 @@ optimization algorithm and parallel computing techniques.
 Execute the following line in your command-line interface:
 
 ```
-pip install --user SEIRQDP_user
+pip install --user SEIQRDP_user
 ```
 
 #### Using conda
