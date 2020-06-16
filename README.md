@@ -2,33 +2,19 @@
 
 This repository is aimed to contain the programs used for dynamical modeling of COVID-19 spread with SEIQRDP compartmental model. It is described in [this paper](https://www.researchgate.net/publication/341655849_Early_dynamics_of_COVID-19_in_Algeria_a_model-based_study) by Mohamed Taha Rouabah, Abdellah Tounsi, and Nacer Eddine Belaloui.
 
-This repository will also contain an agent-based program for epidemic spread simulation in near future.
+This repository will also contain an agent-based program for epidemic spread simulation in the near future.
 
 ## seiqrdp_model
 
 This package includes computational tools to fit data, simulate and calibrate
-parameters of the compartmental epedimiological SEIQRDP model using genetic
-optimization algorithm and parallel computing techniques.
+parameters of the compartmental epidemiological SEIQRDP model using a genetic
+fitting algorithm and parallel computing techniques.
 
 ### Architecture
 
 ![The architecture of the module](https://github.com/Taha-Rouabah/COVID-19/raw/master/images/SEIRQDPDiag.png)
 
 ### How to install
-
-#### Using pip _(preferred way)_
-
-Execute the following line in your command-line interface:
-
-```
-pip install --user seiqrdp_user
-```
-
-#### Using conda
-
-Activate your usual environment (or create a new one) and use the `pip` way.
-> This requires `pip` to be installed in your environment
-
 
 #### Using setup.py
 
@@ -38,7 +24,7 @@ Download the repository then execute the following line in your command-line int
 python setup.py install
 ```
 
-> you need to [cd](<https://en.wikipedia.org/wiki/Cd_(command)>) inside the repository folder
+> You need to [cd](<https://en.wikipedia.org/wiki/Cd_(command)>) inside the repository folder.
 
 ### Quick start
 
