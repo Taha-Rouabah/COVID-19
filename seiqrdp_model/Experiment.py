@@ -16,7 +16,7 @@ import multiprocessing
 import psutil
 
 # SEIR Model
-import SEIQRDP_model.Algeria_SEIR_COVID2019_Object as SEIR
+import seiqrdp_model.Algeria_SEIR_COVID2019_Object as SEIR
 
 
 def SEIR_Worker(ID, location, nDays, nExp, _maxGen, _n_processes):
