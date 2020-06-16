@@ -21,8 +21,8 @@ import pandas as pd
 from os.path import isdir
 from os import mkdir
 
-import SEIQRDP_model.SEIR_Solver as slv
-from SEIQRDP_model.DataCollector import WebDataReader
+import seiqrdp_model.SEIR_Solver as slv
+from seiqrdp_model.DataCollector import WebDataReader
 
 # Our SEIR parameters are bound to these intervals
 # They are: [0:alpha, 1:beta, 2:gamma, 3:delta, 4:I0, 5:E0 ]
