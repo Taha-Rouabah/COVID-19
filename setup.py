@@ -11,7 +11,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="SEIQRDP_model", 
+    name="seiqrdp_model", 
     version="7.5",
     author="T.Rouabah, N.Belaloui, A.Tounsi",
     author_email="m.t.rouabah@gmail.com",
