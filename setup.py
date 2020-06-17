@@ -12,7 +12,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="seiqrdp_model", 
-    version="7.5",
+    version="7.5.1",
     author="T.Rouabah, N.Belaloui, A.Tounsi",
     author_email="m.t.rouabah@gmail.com",
     description="Computational tools to fit data, simulate and calibrate\
