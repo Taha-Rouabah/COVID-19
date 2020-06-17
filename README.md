@@ -16,6 +16,15 @@ fitting algorithm and parallel computing techniques.
 
 ### How to install
 
+#### Using pip _(preferred way)_
+
+Execute the following line in your command-line interface:
+
+```
+pip install seiqrdp-model
+```
+
+
 #### Using setup.py
 
 Download the repository then execute the following line in your command-line interface:
