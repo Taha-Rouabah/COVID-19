@@ -18,7 +18,7 @@ setuptools.setup(
     author="T.Rouabah, N.Belaloui, A.Tounsi",
     author_email="m.t.rouabah@gmail.com",
     description="Computational tools to fit data, simulate and calibrate\
-    parameters of the compartmental epiddmiological SEIQRDP model.",
+    parameters of the compartmental epidemiological SEIQRDP model.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/Taha-Rouabah/COVID-19",
