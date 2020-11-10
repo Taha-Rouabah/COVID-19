@@ -24,6 +24,19 @@ Execute the following line in your command-line interface:
 pip install seiqrdp-model
 ```
 
+#### Using conda
+Installing seiqrdp-model with conda can be achieved by adding conda-forge to your channels with:
+
+```
+conda config --add channels conda-forge
+```
+
+Once the conda-forge channel has been added, seiqrdp-model can be installed with:
+
+```
+conda install seiqrdp-model
+```
+
 
 #### Using setup.py
 
