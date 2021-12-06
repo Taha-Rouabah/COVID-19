@@ -47,8 +47,8 @@ from os import mkdir
 # Utils
 from copy import deepcopy  # Is needed to create hard copies
 # Internal
-from region_data import Region
-import seiqrdp_solver as slv
+from seiqrdp_model.region_data import Region
+import seiqrdp_model.seiqrdp_solver as slv
 
 
 # ###############    DATA    ################
