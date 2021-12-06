@@ -8,7 +8,9 @@ This repository will also contain an agent-based program for epidemic spread sim
 
 This package includes computational tools to fit data, simulate and calibrate
 parameters of the compartmental epidemiological SEIQRDP model using a genetic
-fitting algorithm, a cross-validation method (script yet to be made for the latest version) and parallel computing techniques.
+fitting algorithm, a cross-validation method (not yet implemented in the latest
+version, but can be easily programmed by the user with the tools provided in
+the package) and parallel computing techniques.
 
 ### Architecture
 
