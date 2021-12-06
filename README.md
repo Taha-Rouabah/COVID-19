@@ -1,6 +1,6 @@
 # COVID-19 mathematical modeling
 
-This repository is aimed to contain the programs used for dynamical modeling of COVID-19 spread with SEIQRDP compartmental model. It is described in [this paper](https://www.researchgate.net/publication/341655849_Early_dynamics_of_COVID-19_in_Algeria_a_model-based_study) by Mohamed Taha Rouabah, Abdellah Tounsi, and Nacer Eddine Belaloui.
+This repository is aimed to contain the programs used for dynamical modeling of COVID-19 spread with SEIQRDP compartmental model. It is described in [this paper](https://doi.org/10.1016/j.sciaf.2021.e01050) by Mohamed Taha Rouabah, Abdellah Tounsi, and Nacer Eddine Belaloui.
 
 This repository will also contain an agent-based program for epidemic spread simulation in the near future.
 
