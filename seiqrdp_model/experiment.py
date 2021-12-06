@@ -27,7 +27,7 @@ import multiprocessing
 import psutil
 
 # SEIQRDP model
-import seiqrdp_suite as seiqrdp
+import seiqrdp_model.seiqrdp_suite as seiqrdp
 
 
 def SEIR_Worker(ID, region, n_sim_days, n_experiments, _max_gen, _n_processes):
