@@ -30,7 +30,7 @@ Paper: Rouabah, Tounsi, Belaloui. Genetic algorithm with cross-validation-based
 __version__ = '2.0'
 
 # Everything can be done with an Experiment object.
-from experiment import Experiment
+from seiqrdp_model.experiment import Experiment
 from datetime import datetime
 
 if __name__ == '__main__':
