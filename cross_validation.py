@@ -15,9 +15,9 @@ parameters, i.e., to estimate the epidemic parameters from epidemic data.
 __version__ = '2.0'
 
 # from region_data import Region
-from seiqrdp_suite import load_data
-from seiqrdp_suite import GeneticFit
-from seiqrdp_solver import SEIQRDPSolver
+from seiqrdp_model.seiqrdp_suite import load_data
+from seiqrdp_model.seiqrdp_suite import GeneticFit
+from seiqrdp_model.seiqrdp_solver import SEIQRDPSolver
 import matplotlib.pyplot as plt
 import numpy as np
 
