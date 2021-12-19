@@ -1,88 +1,104 @@
+# -*- coding: utf-8 -*-
 """
-This script helps finding the best maxGen range to avoid under/over-fitting.
-See paper (section 2.2: the overfitting problem)
+@author: belaloui
 
-Training set = Total data MINUS validation data
-Validation set = last 'VALIDATION_PERIOD' days of data.
+This script computes the average fitness value for a validation dataset at
+each number of generations 'g'. Analyzing the fitness versus the number g
+shows when the genetic algorithm starts to overfit the training data.
+An optimum generations number 'g_opt' should give the best (lowest) fitness
+value for the validation dataset. Therefore, when using this GA for
+predictive purposes, one must stop the algorithm after 'g_opt' generations
+to get a good model for prediction.
+This is not necessary when using the GA only for fitting the model's
+parameters, i.e., to estimate the epidemic parameters from epidemic data.
 """
-__version__ = '0.1'
+__version__ = '2.0'
 
-from seiqrdp_model.Algeria_SEIR_COVID2019_Object import Comparator, BaseExperiment
-import seiqrdp_model.Algeria_SEIR_COVID2019_Object as SEIR
+# from region_data import Region
+from seiqrdp_model.seiqrdp_suite import load_data
+from seiqrdp_model.seiqrdp_suite import GeneticFit
+from seiqrdp_model.seiqrdp_solver import SEIQRDPSolver
 import matplotlib.pyplot as plt
-import random
-from numpy import sqrt
-import time
+import numpy as np
 
-# Constants
-REGION = 'Italy'
-VN_RATIO = 1/4  # v/n, where v: validation set size, n: total data set size.
-VALIDATION_PERIOD = 0  # in days (will be computed later).
-INIT_MAXGEN = 5  # from ...
-MAX_MAXGEN = 30  # to
-STEP_MAXGEN = 5  # with a step of ...
-SEED = 2020  # pick anything you like.
+# Data
 
-# We need a Comparator which measures the fitness for
-# the validation set. Thus we introduce SpecialComparator.
+region_name = 'Italy'
+pop_size = 60483054
 
-
-class SpecialComparator(Comparator):
-    """
-        A special Comparator which fits only for the validation
-        period.
-        Inherits from Comparator.
-    """
-
-    def energy(self, f, g):  # We over-write the original energy function.
-        """ Fitness function """
-        erg = 0
-        for a, b in zip(f[-VALIDATION_PERIOD:],
-                        g[-VALIDATION_PERIOD:]):
-            erg += (a-b)**2
-        return(sqrt(erg)/sum(f))
+data_size = 30
+# Cross-validation
+train_data_size = 22
+validation_data_size = 8
+# Genetic algorithm
+init_n_gens = 1
+max_n_gens = 100
+#
+n_fits = 64
 
 
-# Variables
-max_gens = []
-fits = []
+def main():
+    generations = [g for g in range(init_n_gens, max_n_gens+1)]
+    fitnesses = [0]*len(generations)
+    # Load all dataset
+    region = load_data(region_name, pop_size)
 
-# Loading data and setting the training/validation set...
-SEIR.load_data()
-tot_region = SEIR.LOCATIONS[REGION]
-# Resizing the training set
-data_size = len(SEIR.LOCATIONS[REGION].rcQ)
-VALIDATION_PERIOD = round(data_size * VN_RATIO)  # Computing the size of 'v'
-SEIR.LOCATIONS[REGION].rcQ = SEIR.LOCATIONS[REGION].rcQ[: -VALIDATION_PERIOD]
-SEIR.LOCATIONS[REGION].rR = SEIR.LOCATIONS[REGION].rR[: -VALIDATION_PERIOD]
-SEIR.LOCATIONS[REGION].rD = SEIR.LOCATIONS[REGION].rD[: -VALIDATION_PERIOD]
+    # Cutoff to the desired size (all data)
+    region.cutoff_data(data_size)
+    print(f'Loaded all (training + validation) dataset for {region.name} '
+          f'from {region.first_day} to {region.last_day}.')
 
-print('Data size and validation set size:\n'
-      'n =', data_size, '   v =', VALIDATION_PERIOD)
+    # Taking out the validation data.
+    cq_realdata = region.rcQ[-validation_data_size:]
 
-# Setting the timer.
-init_time = time.time()
+    # Cutoff to the training data only
+    region.cutoff_data(train_data_size)
 
-# Evaluating the fitness in the validation set for each maxGen.
-for cur_maxgen in range(INIT_MAXGEN, MAX_MAXGEN+STEP_MAXGEN,
-                        STEP_MAXGEN):
-    # Resetting the random numbers generator.
-    random.seed(SEED)
+    print(f'Using training dataset for {region.name} '
+          f'from {region.first_day} to {region.last_day}.')
 
-    # Simulating with the given parameters...
-    ita_exp = BaseExperiment(SEIR.LOCATIONS[REGION], nDays=data_size, nExp=1,
-                             maxGen=cur_maxgen)
-    ita_exp.run()
+    for _ in range(n_fits):
+        print(f'Fitting {_+1} of {n_fits}.')
+        # First fit (from new random population)
+        fit = GeneticFit(region=region, elite_size=10, max_gen=init_n_gens)
+        fit.run()
+        solution = fit.elite
 
-    # Obtaining the fitness.
-    fit_comp = SpecialComparator(tot_region, ita_exp.elites[0])
-    print('maxGen:', cur_maxgen, '\nFitness:', fit_comp.energy, '\n')
-    # Saving data.
-    max_gens.append(cur_maxgen)
-    fits.append(fit_comp.energy)
+        # Predicting data points (n=validation_data_size)
+        model = SEIQRDPSolver(solution, region)
+        model.solve_model(t_i=0, t_f=data_size)
+        cq_prediction = model.cQ[-validation_data_size:]
 
-print('Done in', int(time.time() - init_time), 'seconds.\n')
-# Showing results
-plt.plot(max_gens, fits, label=f'Validation period = {VALIDATION_PERIOD}')
-plt.legend()
-plt.show()
+        # first result
+        fitnesses[0] += fit.n_rmse(cq_realdata, cq_prediction)
+
+        # Evolve 1 generation at a time, and log the fitness.
+        for g in range(1, len(generations)):
+            # Evolve for 1 more generation.
+            fit.run(resume=True, n_gens=1)
+            solution = fit.elite
+
+            # Predicting data points (n=validation_data_size)
+            model = SEIQRDPSolver(solution, region)
+            model.solve_model(t_i=0, t_f=data_size)
+            cq_prediction = model.cQ[-validation_data_size:]
+
+            # Adding the fitness value to the appropriate generation
+            # number. The resulting sum over all fitnesses for generation g
+            # will be divided by the number of fits later.
+            fitnesses[g] += fit.n_rmse(cq_realdata, cq_prediction)
+
+    # Computing the average fitness per generation.
+    fitnesses = [f/n_fits for f in fitnesses]
+
+    # Saving data to csv file.
+    np.savetxt(fname='fit_vs_gen.csv', X=np.c_[generations, fitnesses],
+               fmt=('%d', '%1.5f'),  delimiter=',')
+
+    # Showing and saving plot.
+    plt.plot(generations, fitnesses)
+    plt.savefig(fname='fit_vs_gen.svg', format='svg')
+
+
+if __name__ == '__main__':
+    main()

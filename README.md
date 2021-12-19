@@ -8,7 +8,8 @@ This repository will also contain an agent-based program for epidemic spread sim
 
 This package includes computational tools to fit data, simulate and calibrate
 parameters of the compartmental epidemiological SEIQRDP model using a genetic
-fitting algorithm, a cross-validation method and parallel computing techniques.
+fitting algorithm, a cross-validation method to avoid overfitting, and
+parallel computing (multiprocessing).
 
 ### Architecture
 
@@ -41,6 +42,7 @@ The module is fully documented and equiped with all necessary information
 about the classes and methods.
 Moreover, you are welcome to check `launcher.py` file which shows an example of
 how to use this module.
+When using the launcher script, or in general when using the Experiment class with multiprocessing, execute the python code in a dedicated console. Some IDEs (like Spyder) don't handle multiprocessing well, and will not run the code properly.
 
 ## Data
 
